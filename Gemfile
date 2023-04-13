@@ -81,4 +81,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  gem "rails-controller-testing"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
+  gem 'shoulda-matchers'
+  gem 'simplecov'
 end

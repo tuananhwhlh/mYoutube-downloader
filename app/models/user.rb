@@ -11,4 +11,8 @@ class User < ApplicationRecord
 
   enumerize :role, in: ROLES, predicates: true, default: :client
   enumerize :status, in: STATUSES, predicates: { prefix: true }, default: :active
+
+  validates :first_name, :last_name, presence: true
+  validates :email, format: URI::MailTo::EMAIL_REGEXP
+  validates :email, presence: true
 end
