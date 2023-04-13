@@ -15,6 +15,12 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+# Flexible authentication solution for Rails based on Warden [https://github.com/heartcombo/devise]
+gem 'devise'
+
+# Enumerated attributes with I18n support [https://github.com/brainspec/enumerize]
+gem 'enumerize'
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
