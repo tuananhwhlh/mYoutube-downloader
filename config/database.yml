@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'].presence || "postgres://localhost:5432/mYoutube_downloader_development" %>
+
+test:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'].presence || "postgres://localhost:5432/mYoutube_downloader_test" %>
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
