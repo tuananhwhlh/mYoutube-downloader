@@ -1,29 +1,60 @@
-<h2>Sign up</h2>
+<div class="w-full mx-auto flex justify-center bg-gray-100 h-screen">
+  <div class="flex">
+    <div class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+      <div class="mx-auto w-full max-w-sm lg:w-96 px-6 py-8 rounded bg-white">
+        <div class="flex justify-start items-center">
+          <%== svg_icon('svg/rocket-launch', class: "h-9 w-9 mr-2") %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+          <h2 class="text-2xl font-bold tracking-tight text-gray-900">Sign up</h2>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="mt-8">
+          <div class="mt-6">
+            <%= form_for(resource, as: resource_name, builder: ViewComponent::Form::Builder, url: registration_path(resource_name)) do |f| %>
+              <div class="grid-cols-2 grid gap-4">
+                <div class="col-span-2 form-control">
+                  <%= f.label :email, required_label('Email') %>
+                  <%= f.text_field :email %>
+
+                  <%= f.error_message :email, class: 'error-message' %>
+                </div>
+
+                <div class="col-span-2 form-control">
+                  <%= f.label :first_name, required_label('First name') %>
+                  <%= f.text_field :first_name %>
+
+                  <%= f.error_message :first_name, class: 'error-message' %>
+                </div>
+
+                <div class="col-span-2 form-control">
+                  <%= f.label :last_name, required_label('Last name') %>
+                  <%= f.text_field :last_name %>
+
+                  <%= f.error_message :last_name, class: 'error-message' %>
+                </div>
+
+                <div class="col-span-2 form-control">
+                  <%= f.label :password, required_label('Password') %>
+                  <%= f.password_field :password, autocomplete: "new-password" %>
+
+                  <%= f.error_message :password, class: 'error-message' %>
+                </div>
+
+                <div class="col-span-2 form-control">
+                  <%= f.label :password_confirmation, required_label('Password confirmation') %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+
+                  <%= f.error_message :password_confirmation, class: 'error-message' %>
+                </div>
+
+                <div class="col-span-2 form-control">
+                  <%= f.submit "Sign up", class: 'float-right btn-md' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
