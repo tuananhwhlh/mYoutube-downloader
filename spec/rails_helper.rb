@@ -38,6 +38,9 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+ActionMailer::Base.default_url_options[:host] = 'test.host.example'
+Rails.application.routes.default_url_options[:host] = 'test.host.example'
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/test/fixtures"

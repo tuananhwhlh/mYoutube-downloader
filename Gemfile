@@ -32,6 +32,7 @@ gem "stimulus-rails"
 
 # Build reusable, testable & encapsulated view components [https://github.com/ViewComponent/view_component]
 gem "view_component"
+gem 'view_component-form'
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
@@ -75,6 +76,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Preview email in the default browser instead of sending it [https://github.com/ryanb/letter_opener]
+  gem "letter_opener"
 end
 
 group :test do
