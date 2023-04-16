@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <main>
+    <%= render Shared::NavbarComponent.new %>
+
+    <main class="py-4">
       <%= yield %>
     </main>
   </body>
