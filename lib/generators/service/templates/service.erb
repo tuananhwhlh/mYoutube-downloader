@@ -1,0 +1,18 @@
+class <%= class_name %> < ApplicationService
+  def initialize
+
+  end
+
+  def perform
+
+  rescue StandardError
+    false
+  end
+
+<% if methods.present? %>  private <% end %>
+<% for method in methods %>
+  def <%= method %>
+
+  end
+<% end %>
+end

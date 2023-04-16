@@ -1,0 +1,13 @@
+Description:
+  Rails cli to generate service class
+
+Example:
+  bin/rails generate service TestModule::Models::TestService method1 method2
+
+  or
+
+  rails g service TestModule::Models::TestService method1 method2
+
+  This will create:
+    app/services/test_module/models/test_service.rb
+    spec/services/test_module/models/test_service_spec.rb
