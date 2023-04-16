@@ -1,0 +1,30 @@
+<button 
+  data-dropdown-toggle="<%= dropdown_id %>" 
+  class="<%= button_css_class %>" 
+  type="button"
+  data-dropdown-offset-skidding="0"
+  >
+  <%= text %>
+
+  <%== svg_icon(svg_path, class: svg_css_class) %>
+</button>
+
+<!-- Dropdown menu -->
+<div id="<%= dropdown_id %>" class="<%= default_menu_css_class %>">
+  <ul class="py-1.5 text-sm text-gray-700 dark:text-gray-200">
+    <% items.each do |item| %>
+      <% unless item[:hidden] %>
+        <% data_attributes = item[:data].presence || {} %>
+        <li>
+          <a
+            href="<%= item[:href].presence || 'javascript:void(0)' %>" 
+            <%= tag.attributes(data: data_attributes) if data_attributes.present? %>
+            class="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+            >
+            <%= item[:text] %>  
+          </a>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

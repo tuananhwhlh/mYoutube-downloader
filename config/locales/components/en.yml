@@ -1,0 +1,8 @@
+en:
+  components:
+    dashboard: Dashboard
+    videos: Videos
+    sign_out: Sign out
+    sign_in: Sign in
+    settings: Settings
+    hi_to_someone: "Hi %{name}"
