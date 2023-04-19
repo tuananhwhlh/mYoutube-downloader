@@ -1,0 +1,32 @@
+<%= turbo_frame_tag "video-form" do %>
+  <%= form_for resource, builder: ViewComponent::Form::Builder, url: go_to_watch_videos_path do |f| %>
+    <div class="w-full mx-auto flex justify-center h-screen">
+      <div class="border-b border-gray-900/10 pb-12 md:w-[600px]">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">How it work?</h2>
+
+        <p class="mt-1 text-sm leading-6 text-gray-600">
+          Open the url on another page: 
+          <span class="text-sm font-bold text-slate-600"><%= "#{request.base_url}/#{demo_path}" %></span>
+        </p>
+        <p class="mt-1 text-sm leading-6 text-gray-600">Or just type the {youtube-video-id} or the whole youtube url in below input and submit.</p>
+
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="col-span-full">
+            <div class="col-span-2 form-control">
+              <%= f.label :display_id, required_label('Url'), class: 'block text-sm font-medium leading-6 text-gray-900' %>
+              <%= f.text_field :display_id, placeholder: "youtube.com/#{demo_path} or {youtube-video-id}", required: true %>
+
+              <%= f.error_message :display_id, class: 'error-message' %>
+            </div>
+          </div>
+
+          <div class="col-span-full">
+            <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 float-right">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
