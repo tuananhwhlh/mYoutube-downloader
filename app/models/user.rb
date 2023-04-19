@@ -15,4 +15,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :email, format: URI::MailTo::EMAIL_REGEXP
   validates :email, presence: true
+
+  has_many :videos, as: :videoable, dependent: :destroy
 end

@@ -1,0 +1,7 @@
+<% if @invalid_id %>
+  <%= turbo_stream.update 'video-form' do %>
+    <%= render Video::NavigateFormComponent.new(resource: @video) %>
+  <% end %>
+<% else %>
+  <%= redirect_tag(watch_path(v: @video.display_id), 'redirect') %>
+<% end %>

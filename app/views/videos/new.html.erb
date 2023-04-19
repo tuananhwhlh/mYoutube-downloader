@@ -1,0 +1,5 @@
+<% if @video.display_id %>
+  <%= render Video::DownloadFormComponent.new(resource: @video) %>
+<% else %>
+  <%= render Video::NavigateFormComponent.new(resource: @video) %>
+<% end %>

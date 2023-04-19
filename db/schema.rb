@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_13_044449) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_041234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_13_044449) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "videoable_type"
+    t.bigint "videoable_id"
+    t.string "title"
+    t.string "description"
+    t.string "display_id"
+    t.string "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["videoable_type", "videoable_id"], name: "index_videos_on_videoable"
   end
 
 end
