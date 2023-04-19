@@ -2,13 +2,32 @@ require 'rails_helper'
 
 RSpec.describe "Videos", type: :request do
   describe "GET /new" do
-    it "render new" do
-      get "/videos/new", params: { display_id: '123456789' }
+    context 'when display_id is missing' do
+      it "should render NavigateFormComponent" do
+        expect(Video::NavigateFormComponent).to receive(:new).once.and_call_original
+        expect(Video::DownloadFormComponent).not_to receive(:new)
 
-      expect(response.status).to eq 200
-      expect(response).to render_template 'videos/new'
+        get "/videos/new", params: {}
 
-      expect(assigns(:video).display_id).to eq '123456789'
+        expect(response.status).to eq 200
+        expect(response).to render_template 'videos/new'
+
+        expect(assigns(:video).display_id).to be_nil
+      end
+    end
+
+    context 'when display_id is given' do
+      it "should render DownloadFormComponent" do
+        expect(Video::DownloadFormComponent).to receive(:new).once.and_call_original
+        expect(Video::NavigateFormComponent).not_to receive(:new)
+
+        get "/videos/new", params: { display_id: 123456789 }
+
+        expect(response.status).to eq 200
+        expect(response).to render_template 'videos/new'
+
+        expect(assigns(:video).display_id).to eq '123456789'
+      end
     end
   end
 
